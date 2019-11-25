@@ -58,7 +58,7 @@ return [
     // The name of the default schema used when no argument is provided
     // to GraphQL::schema() or when the route is used without the graphql_schema
     // parameter.
-    'default_schema' => 'default',
+    'default_schema' => 'api',
 
     // The schemas for query and/or mutation. It expects an array of schemas to provide
     // both the 'query' fields and the 'mutation' fields.
@@ -109,12 +109,24 @@ return [
             'middleware' => [],
             'method'     => ['get', 'post'],
         ],
+        'api' => [
+            'query' => [
+                'login' => \App\GraphQL\Queries\UserLoginQuery::class
+            ],
+            'method' => ['get', 'post', 'put', 'delete']
+        ],
+        'account' => [
+            'query' => [
+                
+            ]
+        ]
     ],
 
     'types' => [
+        'login' => \App\GraphQL\Types\UserLoginType::class,
         'user' => \App\GraphQL\Types\UserType::class
     ],
-    
+
     'lazyload_types' => false,
 
     // This callable will be passed the Error object for each errors GraphQL catch.
