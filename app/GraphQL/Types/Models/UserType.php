@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\GraphQL\Types;
+namespace App\GraphQL\Types\Models;
 
 use App\Models\User;
 use GraphQL\Type\Definition\Type;
@@ -10,7 +10,7 @@ use Rebing\GraphQL\Support\Type as GraphQLType;
 
 /**
  * Class UserType
- * @package App\GraphQL\Types
+ * @package App\GraphQL\Types\Models
  */
 class UserType extends GraphQLType
 {

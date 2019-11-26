@@ -2,37 +2,39 @@
 
 declare(strict_types=1);
 
-namespace App\GraphQL\Types;
+namespace App\GraphQL\Types\Models;
 
+use App\Models\Category;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
 /**
- * Class UserLoginType
- * @package App\GraphQL\Types
+ * Class CategoryType
+ * @package App\GraphQL\Types\Models
  */
-class UserLoginType extends GraphQLType
+
+class CategoryType extends GraphQLType
 {
     /**
-     * Attributes
+     * Attributes of type
      * @var array
      */
     protected $attributes = [
-        'name' => 'UserLogin',
-        'description' => 'A type'
+        'name' => 'Category',
+        'description' => 'A type',
+        'model' => Category::class,
     ];
 
     /**
      * Get fields list
-     *
      * @return array
      */
     public function fields(): array
     {
         return [
-            'token' => [
+            'name' => [
                 'type' => Type::string(),
-                'description' => 'The token of user'
+                'description' => 'The name of category'
             ],
         ];
     }

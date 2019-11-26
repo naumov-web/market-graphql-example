@@ -37,12 +37,12 @@ return [
     //
     // Example:
     //
-    // 'controllers' => [
-    //     'query' => '\Rebing\GraphQL\GraphQLController@query',
-    //     'mutation' => '\Rebing\GraphQL\GraphQLController@mutation'
-    // ]
+     'controllers' => [
+         'query' => '\Rebing\GraphQL\GraphQLController@query',
+         'mutation' => '\Rebing\GraphQL\GraphQLController@mutation'
+     ],
     //
-    'controllers' => \Rebing\GraphQL\GraphQLController::class.'@query',
+    //'controllers' => \Rebing\GraphQL\GraphQLController::class.'@query',
 
     // Any middleware for the graphql route group
     'middleware' => [],
@@ -55,87 +55,35 @@ return [
     //
     'route_group_attributes' => [],
 
-    // The name of the default schema used when no argument is provided
-    // to GraphQL::schema() or when the route is used without the graphql_schema
-    // parameter.
-    'default_schema' => 'api',
+    'default_schema' => 'auth',
 
-    // The schemas for query and/or mutation. It expects an array of schemas to provide
-    // both the 'query' fields and the 'mutation' fields.
-    //
-    // You can also provide a middleware that will only apply to the given schema
-    //
-    // Example:
-    //
-    //  'schema' => 'default',
-    //
-    //  'schemas' => [
-    //      'default' => [
-    //          'query' => [
-    //              'users' => 'App\GraphQL\Query\UsersQuery'
-    //          ],
-    //          'mutation' => [
-    //
-    //          ]
-    //      ],
-    //      'user' => [
-    //          'query' => [
-    //              'profile' => 'App\GraphQL\Query\ProfileQuery'
-    //          ],
-    //          'mutation' => [
-    //
-    //          ],
-    //          'middleware' => ['auth'],
-    //      ],
-    //      'user/me' => [
-    //          'query' => [
-    //              'profile' => 'App\GraphQL\Query\MyProfileQuery'
-    //          ],
-    //          'mutation' => [
-    //
-    //          ],
-    //          'middleware' => ['auth'],
-    //      ],
-    //  ]
-    //
     'schemas' => [
-        'default' => [
-            'query' => [
-                // 'example_query' => ExampleQuery::class,
-            ],
-            'mutation' => [
-                // 'example_mutation'  => ExampleMutation::class,
-            ],
-            'middleware' => [],
-            'method'     => ['get', 'post'],
-        ],
-        'api' => [
+        'auth' => [
             'query' => [
                 'login' => \App\GraphQL\Queries\UserLoginQuery::class
             ],
             'method' => ['get', 'post', 'put', 'delete']
         ],
-        'account' => [
+        'categories' => [
             'query' => [
-                
-            ]
+
+            ],
+            'mutation' => [
+                'create' => \App\GraphQL\Mutations\Account\Category\CreateCategoryMutation::class
+            ],
+            'middleware' => ['auth.jwt'],
+            'method' => ['get', 'post', 'put', 'delete']
         ]
     ],
 
     'types' => [
-        'login' => \App\GraphQL\Types\UserLoginType::class,
-        'user' => \App\GraphQL\Types\UserType::class
+        'login' => \App\GraphQL\Types\Resources\UserLoginType::class,
+        'user' => \App\GraphQL\Types\Models\UserType::class,
+        'category' => \App\GraphQL\Types\Models\CategoryType::class
     ],
 
     'lazyload_types' => false,
 
-    // This callable will be passed the Error object for each errors GraphQL catch.
-    // The method should return an array representing the error.
-    // Typically:
-    // [
-    //     'message' => '',
-    //     'locations' => []
-    // ]
     'error_formatter' => ['\Rebing\GraphQL\GraphQL', 'formatError'],
 
     /*
