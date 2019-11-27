@@ -60,16 +60,16 @@ return [
     'schemas' => [
         'auth' => [
             'query' => [
-                'login' => \App\GraphQL\Queries\UserLoginQuery::class
+                'login' => \App\GraphQL\Queries\Auth\UserLoginQuery::class
             ],
             'method' => ['get', 'post', 'put', 'delete']
         ],
         'categories' => [
             'query' => [
-
+                'list' => \App\GraphQL\Queries\Account\Categories\GetCategoriesQuery::class
             ],
             'mutation' => [
-                'create' => \App\GraphQL\Mutations\Account\Category\CreateCategoryMutation::class
+                'create' => \App\GraphQL\Mutations\Account\Categories\CreateCategoryMutation::class
             ],
             'middleware' => ['auth.jwt'],
             'method' => ['get', 'post', 'put', 'delete']
@@ -77,9 +77,10 @@ return [
     ],
 
     'types' => [
-        'login' => \App\GraphQL\Types\Resources\UserLoginType::class,
+        'login' => \App\GraphQL\Types\Resources\Auth\UserLoginType::class,
         'user' => \App\GraphQL\Types\Models\UserType::class,
-        'category' => \App\GraphQL\Types\Models\CategoryType::class
+        'category' => \App\GraphQL\Types\Models\CategoryType::class,
+        'categoriesList' => \App\GraphQL\Types\Resources\Account\Categories\CategoriesList::class,
     ],
 
     'lazyload_types' => false,

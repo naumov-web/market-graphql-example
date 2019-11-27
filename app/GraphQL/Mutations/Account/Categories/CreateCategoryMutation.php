@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\GraphQL\Mutations\Account\Category;
+namespace App\GraphQL\Mutations\Account\Categories;
 
 use App\Services\CategoriesService;
 use Closure;
@@ -10,11 +10,10 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Mutation;
-use Rebing\GraphQL\Support\SelectFields;
 
 /**
  * Class CreateCategoryMutation
- * @package App\GraphQL\Mutations\Account\Category
+ * @package App\GraphQL\Mutations\Account\Categories
  */
 class CreateCategoryMutation extends Mutation
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\GraphQL\Queries;
+namespace App\GraphQL\Queries\Auth;
 
 use App\Services\UsersService;
 use Closure;
@@ -14,7 +14,7 @@ use Rebing\GraphQL\Support\Query;
 
 /**
  * Class UserLoginQuery
- * @package App\GraphQL\Queries
+ * @package App\GraphQL\Queries\Auth
  */
 class UserLoginQuery extends Query
 {

@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\GraphQL\Types\Resources;
+namespace App\GraphQL\Types\Resources\Account;
 
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
 /**
- * Class UserLoginType
- * @package App\GraphQL\Types\Resources
+ * Class AbstractListType
+ * @package App\GraphQL\Types\Resources\Account
  */
-class UserLoginType extends GraphQLType
+class AbstractListType extends GraphQLType
 {
     /**
-     * Attributes
+     * List of attributes
      * @var array
      */
     protected $attributes = [
-        'name' => 'UserLogin',
+        'name' => 'AbstractList',
         'description' => 'A type'
     ];
 
@@ -30,9 +30,9 @@ class UserLoginType extends GraphQLType
     public function fields(): array
     {
         return [
-            'token' => [
-                'type' => Type::string(),
-                'description' => 'The token of user'
+            'count' => [
+                'type' => Type::int(),
+                'description' => 'Count of list items'
             ],
         ];
     }

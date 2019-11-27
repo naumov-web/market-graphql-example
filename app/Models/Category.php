@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Category
+ * Class Categories
  * @package App\Models
  *
  * @property-read int $id
