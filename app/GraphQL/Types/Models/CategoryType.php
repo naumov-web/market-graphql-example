@@ -32,10 +32,18 @@ class CategoryType extends GraphQLType
     public function fields(): array
     {
         return [
+            'id' => [
+                'type' => Type::int(),
+                'description' => 'The id of category'
+            ],
             'name' => [
                 'type' => Type::string(),
                 'description' => 'The name of category'
             ],
+            'parent_id' => [
+                'type' => Type::int(),
+                'description' => 'Id of parent category'
+            ]
         ];
     }
 }

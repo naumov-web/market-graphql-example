@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Mutations\Account\Category;
 
+use App\Services\CategoriesService;
 use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
@@ -27,6 +28,21 @@ class CreateCategoryMutation extends Mutation
     ];
 
     /**
+     * Categories service instance
+     * @var CategoriesService
+     */
+    protected $categories_service;
+
+    /**
+     * CreateCategoryMutation constructor.
+     * @param CategoriesService $categories_service
+     */
+    public function __construct(CategoriesService $categories_service)
+    {
+        $this->categories_service = $categories_service;
+    }
+
+    /**
      * Get type of mutation
      * @return Type
      */
@@ -43,7 +59,8 @@ class CreateCategoryMutation extends Mutation
     public function args(): array
     {
         return [
-            'name' => ['name' => 'name', 'type' => Type::nonNull(Type::string())]
+            'name' => ['name' => 'name', 'type' => Type::nonNull(Type::string())],
+            'parent_id' => ['name' => 'parent_id', 'type' => Type::int()]
         ];
     }
 
@@ -57,6 +74,7 @@ class CreateCategoryMutation extends Mutation
     {
         return [
             'name' => ['required'],
+            'parent_id' => ['nullable', 'integer']
         ];
     }
 
@@ -68,12 +86,12 @@ class CreateCategoryMutation extends Mutation
      * @param $context
      * @param ResolveInfo $resolveInfo
      * @param Closure $getSelectFields
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
-        return [
-            'name' => 'Test-test-test'
-        ];
+        $model = $this->categories_service->store($args);
+
+        return $model;
     }
 }
