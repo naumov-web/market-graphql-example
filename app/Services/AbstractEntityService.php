@@ -33,6 +33,29 @@ abstract class AbstractEntityService
     }
 
     /**
+     * Get model by id
+     *
+     * @param int $id
+     * @return Model|null
+     */
+    public function getById(int $id) : ?Model
+    {
+        return $this->getRepository()->getById($id);
+    }
+
+    /**
+     * Simple updating of model
+     *
+     * @param Model $model
+     * @param array $data
+     * @return Model|null
+     */
+    public function update(Model $model, array $data) : ?Model
+    {
+        return $this->getRepository()->update($model, $data);
+    }
+
+    /**
      * Get items and count
      *
      * @param array $data

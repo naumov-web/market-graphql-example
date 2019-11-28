@@ -20,6 +20,34 @@ abstract class AbstractRepository
     protected abstract function getModelClass() : string;
 
     /**
+     * Get model by id
+     *
+     * @param int $id
+     * @return Model|null
+     */
+    public function getById(int $id) : ?Model
+    {
+        $model_class = $this->getModelClass();
+
+        return $model_class::find($id);
+    }
+
+    /**
+     * Update model
+     *
+     * @param Model $model
+     * @param array $data
+     * @return Model
+     */
+    public function update(Model $model, array $data) : Model
+    {
+        $model->fill($data);
+        $model->save();
+
+        return $model;
+    }
+
+    /**
      * Get items and count
      *
      * @param array $data
@@ -62,21 +90,6 @@ abstract class AbstractRepository
          * @var Model $model
          */
         $model = new $model_class();
-        $model->fill($data);
-        $model->save();
-
-        return $model;
-    }
-
-    /**
-     * Update model
-     *
-     * @param Model $model
-     * @param array $data
-     * @return Model
-     */
-    public function update(Model $model, array $data) : Model
-    {
         $model->fill($data);
         $model->save();
 

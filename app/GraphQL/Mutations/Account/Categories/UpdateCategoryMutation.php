@@ -10,19 +10,21 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Mutation;
+use Rebing\GraphQL\Support\SelectFields;
 
 /**
- * Class CreateCategoryMutation
+ * Class UpdateCategoryMutation
  * @package App\GraphQL\Mutations\Account\Categories
  */
-class CreateCategoryMutation extends Mutation
+class UpdateCategoryMutation extends Mutation
 {
+
     /**
      * Mutation attributes
      * @var array
      */
     protected $attributes = [
-        'name' => 'createCategory',
+        'name' => 'updateCategory',
         'description' => 'A mutation'
     ];
 
@@ -63,34 +65,12 @@ class CreateCategoryMutation extends Mutation
         ];
     }
 
-    /**
-     * Get validation rules
-     *
-     * @param array $args
-     * @return array
-     */
-    protected function rules(array $args = []): array
-    {
-        return [
-            'name' => ['required'],
-            'parent_id' => ['nullable', 'integer']
-        ];
-    }
-
-    /**
-     * Resolve request
-     *
-     * @param $root
-     * @param $args
-     * @param $context
-     * @param ResolveInfo $resolveInfo
-     * @param Closure $getSelectFields
-     * @return \Illuminate\Database\Eloquent\Model
-     */
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
-        $model = $this->categories_service->store($args);
+        $fields = $getSelectFields();
+        $select = $fields->getSelect();
+        $with = $fields->getRelations();
 
-        return $model;
+        return [];
     }
 }
