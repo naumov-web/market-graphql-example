@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Class AbstractRepository
@@ -17,6 +18,35 @@ abstract class AbstractRepository
      * @return string
      */
     protected abstract function getModelClass() : string;
+
+    /**
+     * Get items and count
+     *
+     * @param array $data
+     * @return array
+     */
+    public function index(array $data) : array
+    {
+        $model_class = $this->getModelClass();
+
+        /**
+         * @var Builder $query
+         */
+        $query = $model_class::query();
+        $count = $query->count();
+
+        if (isset($data['limit'])) {
+            $query->limit($data['limit']);
+        }
+        if (isset($data['offset'])) {
+            $query->offset($data['offset']);
+        }
+
+        return [
+            'count' => $count,
+            'items' => $query->get(),
+        ];
+    }
 
     /**
      * Store new model to database

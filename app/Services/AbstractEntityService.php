@@ -32,4 +32,15 @@ abstract class AbstractEntityService
         return $repository->store($data);
     }
 
+    /**
+     * Get items and count
+     *
+     * @param array $data
+     * @return array
+     */
+    public function index(array $data) : array
+    {
+        return $this->getRepository()->index($data);
+    }
+
 }

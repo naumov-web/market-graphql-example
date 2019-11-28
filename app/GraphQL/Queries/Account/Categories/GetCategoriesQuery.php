@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\GraphQL\Queries\Account\Categories;
 
 use App\GraphQL\Queries\Account\AbstractListQuery;
+use App\Services\CategoriesService;
 use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
@@ -17,6 +18,21 @@ use Rebing\GraphQL\Support\SelectFields;
  */
 class GetCategoriesQuery extends AbstractListQuery
 {
+
+    /**
+     * Categories service
+     * @var CategoriesService
+     */
+    protected $service;
+
+    /**
+     * GetCategoriesQuery constructor.
+     * @param CategoriesService $service
+     */
+    public function __construct(CategoriesService $service)
+    {
+        $this->service = $service;
+    }
 
     /**
      * Definition of attributes array
@@ -53,8 +69,8 @@ class GetCategoriesQuery extends AbstractListQuery
         /** @var SelectFields $fields */
         $fields = $getSelectFields();
 
-        return [
-            'The getCategories works',
-        ];
+        $result = $this->service->index($args);
+
+        return $result;
     }
 }
