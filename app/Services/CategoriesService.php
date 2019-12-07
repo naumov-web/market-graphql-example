@@ -58,4 +58,16 @@ class CategoriesService extends AbstractEntityService
             )
         );
     }
+
+    /**
+     * Delete category
+     *
+     * @param Model $model
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(Model $model): bool
+    {
+        return $this->deleteModel($model);
+    }
 }

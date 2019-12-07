@@ -11,21 +11,19 @@ use GraphQL\Type\Definition\Type;
 use Illuminate\Http\Response;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Mutation;
-use Rebing\GraphQL\Support\SelectFields;
 
 /**
- * Class UpdateCategoryMutation
+ * Class DeleteCategoryMutation
  * @package App\GraphQL\Mutations\Account\Categories
  */
-class UpdateCategoryMutation extends Mutation
+class DeleteCategoryMutation extends Mutation
 {
-
     /**
      * Mutation attributes
      * @var array
      */
     protected $attributes = [
-        'name' => 'updateCategory',
+        'name' => 'deleteCategory',
         'description' => 'A mutation'
     ];
 
@@ -50,7 +48,7 @@ class UpdateCategoryMutation extends Mutation
      */
     public function type(): Type
     {
-        return GraphQL::type('category');
+        return GraphQL::type('defaultBoolean');
     }
 
     /**
@@ -62,33 +60,30 @@ class UpdateCategoryMutation extends Mutation
     {
         return [
             'id' => ['name' => 'id', 'type' => Type::nonNull(Type::int())],
-            'name' => ['name' => 'name', 'type' => Type::nonNull(Type::string())],
-            'parent_id' => ['name' => 'parent_id', 'type' => Type::int()]
         ];
     }
 
     /**
-     * Resolve mutation
+     * Resolve request
      *
      * @param $root
      * @param $args
      * @param $context
      * @param ResolveInfo $resolveInfo
      * @param Closure $getSelectFields
-     * @return \Illuminate\Database\Eloquent\Model|null
+     * @return array
+     * @throws \Exception
      */
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
-
         $model = $this->categories_service->getModelById($args['id']);
 
         if (!$model) {
             abort(Response::HTTP_NOT_FOUND);
         }
 
-        return $this->categories_service->update(
-            $model,
-            $args
-        );
+        return [
+            'success' => $this->categories_service->delete($model)
+        ];
     }
 }

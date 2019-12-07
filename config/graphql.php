@@ -71,6 +71,7 @@ return [
             'mutation' => [
                 'create' => \App\GraphQL\Mutations\Account\Categories\CreateCategoryMutation::class,
                 'update' => \App\GraphQL\Mutations\Account\Categories\UpdateCategoryMutation::class,
+                'delete' => \App\GraphQL\Mutations\Account\Categories\DeleteCategoryMutation::class,
             ],
             'middleware' => ['auth.jwt'],
             'method' => ['get', 'post', 'put', 'delete']
@@ -82,6 +83,7 @@ return [
         'user' => \App\GraphQL\Types\Models\UserType::class,
         'category' => \App\GraphQL\Types\Models\CategoryType::class,
         'categoriesList' => \App\GraphQL\Types\Resources\Account\Categories\CategoriesList::class,
+        'defaultBoolean' => \App\GraphQL\Types\Resources\DefaultBooleanType::class,
     ],
 
     'lazyload_types' => false,
