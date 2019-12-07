@@ -25,7 +25,7 @@ abstract class AbstractEntityService
      * @param array $data
      * @return Model
      */
-    public function store(array $data) : Model
+    public function storeModel(array $data) : Model
     {
         $repository = $this->getRepository();
 
@@ -38,7 +38,7 @@ abstract class AbstractEntityService
      * @param int $id
      * @return Model|null
      */
-    public function getById(int $id) : ?Model
+    public function getModelById(int $id) : ?Model
     {
         return $this->getRepository()->getById($id);
     }
@@ -50,9 +50,21 @@ abstract class AbstractEntityService
      * @param array $data
      * @return Model|null
      */
-    public function update(Model $model, array $data) : ?Model
+    public function updateModel(Model $model, array $data) : ?Model
     {
         return $this->getRepository()->update($model, $data);
+    }
+
+    /**
+     * Delete model
+     *
+     * @param Model $model
+     * @return bool
+     * @throws \Exception
+     */
+    public function deleteModel(Model $model): bool
+    {
+        return $this->getRepository()->delete($model);
     }
 
     /**
@@ -61,7 +73,7 @@ abstract class AbstractEntityService
      * @param array $data
      * @return array
      */
-    public function index(array $data) : array
+    public function indexModels(array $data) : array
     {
         return $this->getRepository()->index($data);
     }

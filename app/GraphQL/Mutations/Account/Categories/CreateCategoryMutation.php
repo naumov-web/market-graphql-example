@@ -8,6 +8,7 @@ use App\Services\CategoriesService;
 use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
+use Illuminate\Database\Eloquent\Model;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Mutation;
 
@@ -85,12 +86,10 @@ class CreateCategoryMutation extends Mutation
      * @param $context
      * @param ResolveInfo $resolveInfo
      * @param Closure $getSelectFields
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return Model
      */
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
-        $model = $this->categories_service->store($args);
-
-        return $model;
+        return $this->categories_service->storeModel($args);
     }
 }

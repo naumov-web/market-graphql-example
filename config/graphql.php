@@ -69,7 +69,8 @@ return [
                 'list' => \App\GraphQL\Queries\Account\Categories\GetCategoriesQuery::class
             ],
             'mutation' => [
-                'create' => \App\GraphQL\Mutations\Account\Categories\CreateCategoryMutation::class
+                'create' => \App\GraphQL\Mutations\Account\Categories\CreateCategoryMutation::class,
+                'update' => \App\GraphQL\Mutations\Account\Categories\UpdateCategoryMutation::class,
             ],
             'middleware' => ['auth.jwt'],
             'method' => ['get', 'post', 'put', 'delete']

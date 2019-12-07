@@ -69,7 +69,7 @@ class GetCategoriesQuery extends AbstractListQuery
         /** @var SelectFields $fields */
         $fields = $getSelectFields();
 
-        $result = $this->service->index($args);
+        $result = $this->service->indexModels($args);
 
         return $result;
     }

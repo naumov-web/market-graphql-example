@@ -25,7 +25,7 @@ abstract class AbstractRepository
      * @param int $id
      * @return Model|null
      */
-    public function getById(int $id) : ?Model
+    public function getById(int $id): ?Model
     {
         $model_class = $this->getModelClass();
 
@@ -39,12 +39,24 @@ abstract class AbstractRepository
      * @param array $data
      * @return Model
      */
-    public function update(Model $model, array $data) : Model
+    public function update(Model $model, array $data): Model
     {
         $model->fill($data);
         $model->save();
 
         return $model;
+    }
+
+    /**
+     * Delete model
+     *
+     * @param Model $model
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(Model $model): bool
+    {
+        return $model->delete();
     }
 
     /**
