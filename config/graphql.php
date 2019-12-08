@@ -75,6 +75,14 @@ return [
             ],
             'middleware' => ['auth.jwt'],
             'method' => ['get', 'post', 'put', 'delete']
+        ],
+        'brands' => [
+            'query' => [],
+            'mutation' => [
+                'create' => \App\GraphQL\Mutations\Account\Brands\CreateBrandMutation::class,
+            ],
+            'middleware' => ['auth.jwt'],
+            'method' => ['get', 'post', 'put', 'delete']
         ]
     ],
 
@@ -83,6 +91,7 @@ return [
         'user' => \App\GraphQL\Types\Models\UserType::class,
         'category' => \App\GraphQL\Types\Models\CategoryType::class,
         'categoriesList' => \App\GraphQL\Types\Resources\Account\Categories\CategoriesList::class,
+        'brand' => \App\GraphQL\Types\Models\BrandType::class,
         'defaultBoolean' => \App\GraphQL\Types\Resources\DefaultBooleanType::class,
     ],
 
