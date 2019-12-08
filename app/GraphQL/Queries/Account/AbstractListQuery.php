@@ -24,6 +24,8 @@ abstract class AbstractListQuery extends Query
         return [
             'limit' => ['name' => 'limit', 'type' => Type::int()],
             'offset' => ['name' => 'offset', 'type' => Type::int()],
+            'sort_by' => ['name' => 'sort_by', 'type' => Type::string()],
+            'sort_direction' => ['name' => 'sort_direction', 'type' => Type::string()]
         ];
     }
 }

@@ -82,6 +82,10 @@ abstract class AbstractRepository
             $query->offset($data['offset']);
         }
 
+        if (isset($data['sort_by']) && isset($data['sort_direction'])) {
+            $query->orderBy($data['sort_by'], $data['sort_direction']);
+        }
+
         return [
             'count' => $count,
             'items' => $query->get(),

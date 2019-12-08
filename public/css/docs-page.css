@@ -1,0 +1,17 @@
+p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
