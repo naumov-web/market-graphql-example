@@ -2,20 +2,19 @@
 
 namespace App\GraphQL\Mutations\Account\Brands;
 
+use App\GraphQL\Mutations\AdminMutation;
 use App\Services\BrandsService;
-use App\Services\CategoriesService;
 use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Illuminate\Database\Eloquent\Model;
 use Rebing\GraphQL\Support\Facades\GraphQL;
-use Rebing\GraphQL\Support\Mutation;
 
 /**
  * Class CreateBrandMutation
  * @package App\GraphQL\Mutations\Account\Brands
  */
-class CreateBrandMutation extends Mutation
+class CreateBrandMutation extends AdminMutation
 {
     /**
      * Mutation attributes

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Queries\Account;
 
+use App\GraphQL\Queries\AdminQuery;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 
@@ -11,7 +12,7 @@ use Rebing\GraphQL\Support\Query;
  * Class AbstractListQuery
  * @package App\GraphQL\Queries
  */
-abstract class AbstractListQuery extends Query
+abstract class AbstractListQuery extends AdminQuery
 {
 
     /**

@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Mutations\Account\Categories;
 
+use App\GraphQL\Mutations\AdminMutation;
 use App\Services\CategoriesService;
 use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Illuminate\Http\Response;
 use Rebing\GraphQL\Support\Facades\GraphQL;
-use Rebing\GraphQL\Support\Mutation;
 
 /**
  * Class DeleteCategoryMutation
  * @package App\GraphQL\Mutations\Account\Categories
  */
-class DeleteCategoryMutation extends Mutation
+class DeleteCategoryMutation extends AdminMutation
 {
     /**
      * Mutation attributes
@@ -24,7 +24,7 @@ class DeleteCategoryMutation extends Mutation
      */
     protected $attributes = [
         'name' => 'deleteCategory',
-        'description' => 'A mutation'
+        'description' => 'Mutation for deleting of category'
     ];
 
     /**

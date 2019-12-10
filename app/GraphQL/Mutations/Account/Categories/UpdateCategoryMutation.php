@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Mutations\Account\Categories;
 
+use App\GraphQL\Mutations\AdminMutation;
 use App\Services\CategoriesService;
 use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Illuminate\Http\Response;
 use Rebing\GraphQL\Support\Facades\GraphQL;
-use Rebing\GraphQL\Support\Mutation;
-use Rebing\GraphQL\Support\SelectFields;
 
 /**
  * Class UpdateCategoryMutation
  * @package App\GraphQL\Mutations\Account\Categories
  */
-class UpdateCategoryMutation extends Mutation
+class UpdateCategoryMutation extends AdminMutation
 {
 
     /**
@@ -26,7 +25,7 @@ class UpdateCategoryMutation extends Mutation
      */
     protected $attributes = [
         'name' => 'updateCategory',
-        'description' => 'A mutation'
+        'description' => 'Mutation for updating of category'
     ];
 
     /**

@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Mutations\Account\Categories;
 
+use App\GraphQL\Mutations\AdminMutation;
 use App\Services\CategoriesService;
 use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Illuminate\Database\Eloquent\Model;
 use Rebing\GraphQL\Support\Facades\GraphQL;
-use Rebing\GraphQL\Support\Mutation;
 
 /**
  * Class CreateCategoryMutation
  * @package App\GraphQL\Mutations\Account\Categories
  */
-class CreateCategoryMutation extends Mutation
+class CreateCategoryMutation extends AdminMutation
 {
     /**
      * Mutation attributes
@@ -24,7 +24,7 @@ class CreateCategoryMutation extends Mutation
      */
     protected $attributes = [
         'name' => 'createCategory',
-        'description' => 'A mutation'
+        'description' => 'Mutation for creating of category'
     ];
 
     /**

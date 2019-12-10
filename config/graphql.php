@@ -55,35 +55,31 @@ return [
     //
     'route_group_attributes' => [],
 
-    'default_schema' => 'auth',
+    'auth_exclude' => [
+        'query' => [
+            'login',
+            'getCategories'
+        ]
+    ],
+
+    'default_schema' => 'default',
 
     'schemas' => [
-        'auth' => [
+        'default' => [
             'query' => [
-                'login' => \App\GraphQL\Queries\Auth\UserLoginQuery::class
+                'login' => \App\GraphQL\Queries\Auth\UserLoginQuery::class,
+                'getCategories' => \App\GraphQL\Queries\Account\Categories\GetCategoriesQuery::class
+            ],
+            'mutation' => [
+                // Categories
+                'createCategory' => \App\GraphQL\Mutations\Account\Categories\CreateCategoryMutation::class,
+                'updateCategory' => \App\GraphQL\Mutations\Account\Categories\UpdateCategoryMutation::class,
+                'deleteCategory' => \App\GraphQL\Mutations\Account\Categories\DeleteCategoryMutation::class,
+                // Brands
+                'createBrand' => \App\GraphQL\Mutations\Account\Brands\CreateBrandMutation::class,
             ],
             'method' => ['get', 'post', 'put', 'delete']
         ],
-        'categories' => [
-            'query' => [
-                'list' => \App\GraphQL\Queries\Account\Categories\GetCategoriesQuery::class
-            ],
-            'mutation' => [
-                'create' => \App\GraphQL\Mutations\Account\Categories\CreateCategoryMutation::class,
-                'update' => \App\GraphQL\Mutations\Account\Categories\UpdateCategoryMutation::class,
-                'delete' => \App\GraphQL\Mutations\Account\Categories\DeleteCategoryMutation::class,
-            ],
-            'middleware' => ['auth.jwt'],
-            'method' => ['get', 'post', 'put', 'delete']
-        ],
-        'brands' => [
-            'query' => [],
-            'mutation' => [
-                'create' => \App\GraphQL\Mutations\Account\Brands\CreateBrandMutation::class,
-            ],
-            'middleware' => ['auth.jwt'],
-            'method' => ['get', 'post', 'put', 'delete']
-        ]
     ],
 
     'types' => [
