@@ -55,13 +55,6 @@ return [
     //
     'route_group_attributes' => [],
 
-    'auth_exclude' => [
-        'query' => [
-            'login',
-            'getCategories'
-        ]
-    ],
-
     'default_schema' => 'default',
 
     'schemas' => [
@@ -78,6 +71,7 @@ return [
                 // Brands
                 'createBrand' => \App\GraphQL\Mutations\Account\Brands\CreateBrandMutation::class,
             ],
+            'middleware' => ['jwt.auth'],
             'method' => ['get', 'post', 'put', 'delete']
         ],
     ],

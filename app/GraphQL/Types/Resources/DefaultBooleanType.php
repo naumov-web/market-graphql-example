@@ -16,7 +16,7 @@ class DefaultBooleanType extends GraphQLType
      * @var array
      */
     protected $attributes = [
-        'name' => 'Default response',
+        'name' => 'defaultBooleanResponse',
         'description' => 'A user'
     ];
 
