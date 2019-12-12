@@ -71,7 +71,7 @@ return [
                 // Brands
                 'createBrand' => \App\GraphQL\Mutations\Account\Brands\CreateBrandMutation::class,
             ],
-            'middleware' => ['jwt.auth'],
+            'middleware' => ['auth.graphql'],
             'method' => ['get', 'post', 'put', 'delete']
         ],
     ],

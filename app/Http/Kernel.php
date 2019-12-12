@@ -2,10 +2,14 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\GraphqlAuth;
+use App\Http\Middleware\GraphQLAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Tymon\JWTAuth\Http\Middleware\Authenticate;
 
+/**
+ * Class Kernel
+ * @package App\Http
+ */
 class Kernel extends HttpKernel
 {
     /**
@@ -63,7 +67,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'auth.jwt' => Authenticate::class
+        'auth.jwt' => Authenticate::class,
+        'auth.graphql' => GraphQLAuth::class,
     ];
 
     /**
