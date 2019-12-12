@@ -61,7 +61,8 @@ return [
         'default' => [
             'query' => [
                 'login' => \App\GraphQL\Queries\Auth\UserLoginQuery::class,
-                'getCategories' => \App\GraphQL\Queries\Account\Categories\GetCategoriesQuery::class
+                'getCategories' => \App\GraphQL\Queries\Account\Categories\GetCategoriesQuery::class,
+                'getBrands' => \App\GraphQL\Queries\Account\Brands\GetBrandsQuery::class,
             ],
             'mutation' => [
                 // Categories
@@ -81,6 +82,7 @@ return [
         'user' => \App\GraphQL\Types\Models\UserType::class,
         'category' => \App\GraphQL\Types\Models\CategoryType::class,
         'categoriesList' => \App\GraphQL\Types\Resources\Account\Categories\CategoriesList::class,
+        'brandsList' => \App\GraphQL\Types\Resources\Account\Brands\BrandsList::class,
         'brand' => \App\GraphQL\Types\Models\BrandType::class,
         'defaultBoolean' => \App\GraphQL\Types\Resources\DefaultBooleanType::class,
     ],

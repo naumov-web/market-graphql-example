@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Tymon\JWTAuth\Http\Middleware\Authenticate as Middleware;
 
 /**
  * Class GraphQLAuth
@@ -12,8 +12,22 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 class GraphQLAuth extends Middleware
 {
 
+    /**
+     * Handler of middleware
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @param Closure $next
+     * @param mixed ...$guards
+     * @return mixed
+     */
     public function handle($request, Closure $next, ...$guards)
     {
+        $token = str_replace('Bearer ', '', $request->header('Authorization'));
+
+        if ($token) {
+            $this->authenticate($request);
+        }
+
         return $next($request);
     }
 

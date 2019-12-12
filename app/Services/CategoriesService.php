@@ -43,7 +43,7 @@ class CategoriesService extends AbstractEntityService
      *
      * @param Model $model
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model|null
+     * @return Model|null
      */
     public function update(Model $model, array $data): ?Model
     {

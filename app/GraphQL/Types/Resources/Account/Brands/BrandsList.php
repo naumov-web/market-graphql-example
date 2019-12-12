@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace App\GraphQL\Types\Resources\Account\Categories;
+namespace App\GraphQL\Types\Resources\Account\Brands;
 
 use App\GraphQL\Types\Resources\Account\AbstractListType;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 
 /**
- * Class CategoriesList
- * @package App\GraphQL\Types\Resources\Account\Categories
+ * Class BrandsList
+ * @package App\GraphQL\Types\Resources\Account\Brands
  */
-class CategoriesList extends AbstractListType
+class BrandsList extends AbstractListType
 {
     /**
      * List of attributes
      * @var array
      */
     protected $attributes = [
-        'name' => 'CategoriesList',
-        'description' => 'List of categories'
+        'name' => 'BrandsList',
+        'description' => 'List of brands'
     ];
 
     /**
@@ -34,7 +34,7 @@ class CategoriesList extends AbstractListType
             parent::fields(),
             [
                 'items' => [
-                    'type' => Type::listOf(GraphQL::type('category')),
+                    'type' => Type::listOf(GraphQL::type('brand')),
                     'description' => 'List of items'
                 ]
             ]

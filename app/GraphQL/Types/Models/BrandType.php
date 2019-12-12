@@ -17,7 +17,7 @@ class BrandType extends GraphQLType
      * @var array
      */
     protected $attributes = [
-        'name' => 'Brand',
+        'name' => 'Brands',
         'description' => 'A type',
         'model' => Brand::class,
     ];
