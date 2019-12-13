@@ -36,7 +36,7 @@ class UserType extends GraphQLType
                 'description' => 'The id of user'
             ],
             'email' => [
-                'type' => Type::string(),
+                'type' => Type::nonNull(Type::string()),
                 'description' => 'The email of user'
             ],
             'password' => [

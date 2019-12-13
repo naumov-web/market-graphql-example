@@ -34,7 +34,7 @@ class CategoriesList extends AbstractListType
             parent::fields(),
             [
                 'items' => [
-                    'type' => Type::listOf(GraphQL::type('category')),
+                    'type' => Type::nonNull(Type::listOf(GraphQL::type('category'))),
                     'description' => 'List of items'
                 ]
             ]

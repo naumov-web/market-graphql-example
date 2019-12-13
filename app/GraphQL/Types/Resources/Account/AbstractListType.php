@@ -31,7 +31,7 @@ class AbstractListType extends GraphQLType
     {
         return [
             'count' => [
-                'type' => Type::int(),
+                'type' => Type::nonNull(Type::int()),
                 'description' => 'Count of list items'
             ],
         ];

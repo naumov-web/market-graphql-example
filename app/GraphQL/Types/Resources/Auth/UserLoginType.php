@@ -31,7 +31,7 @@ class UserLoginType extends GraphQLType
     {
         return [
             'token' => [
-                'type' => Type::string(),
+                'type' => Type::nonNull(Type::string()),
                 'description' => 'The token of user'
             ],
         ];

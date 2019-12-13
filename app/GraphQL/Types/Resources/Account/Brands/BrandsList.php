@@ -34,7 +34,7 @@ class BrandsList extends AbstractListType
             parent::fields(),
             [
                 'items' => [
-                    'type' => Type::listOf(GraphQL::type('brand')),
+                    'type' => Type::nonNull(Type::listOf(GraphQL::type('brand'))),
                     'description' => 'List of items'
                 ]
             ]

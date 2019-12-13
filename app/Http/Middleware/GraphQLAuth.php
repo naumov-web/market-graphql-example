@@ -14,7 +14,7 @@ class GraphQLAuth extends Middleware
 
     /**
      * Handler of middleware
-     * 
+     *
      * @param \Illuminate\Http\Request $request
      * @param Closure $next
      * @param mixed ...$guards

@@ -58,8 +58,8 @@ class UserLoginQuery extends Query
     public function args(): array
     {
         return [
-            'email' => ['name' => 'email', 'type' => Type::string()],
-            'password' => ['name' => 'password', 'type' => Type::string()]
+            'email' => ['name' => 'email', 'type' => Type::nonNull(Type::string())],
+            'password' => ['name' => 'password', 'type' => Type::nonNull(Type::string())]
         ];
     }
 

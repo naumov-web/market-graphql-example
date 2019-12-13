@@ -30,11 +30,11 @@ class BrandType extends GraphQLType
     {
         return [
             'id' => [
-                'type' => Type::int(),
+                'type' => Type::nonNull(Type::int()),
                 'description' => 'The id of brand'
             ],
             'name' => [
-                'type' => Type::string(),
+                'type' => Type::nonNull(Type::string()),
                 'description' => 'The name of brand'
             ],
             'description' => [

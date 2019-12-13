@@ -28,7 +28,7 @@ class DefaultBooleanType extends GraphQLType
     {
         return [
             'success' => [
-                'type' => Type::boolean(),
+                'type' => Type::nonNull(Type::boolean()),
                 'description' => 'Result of request'
             ],
         ];

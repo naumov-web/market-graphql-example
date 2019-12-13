@@ -41,7 +41,7 @@ class GetCategoriesQuery extends AbstractListQuery
      */
     protected $attributes = [
         'name' => 'getCategories',
-        'description' => 'A query'
+        'description' => 'Get all categories'
     ];
 
     /**
