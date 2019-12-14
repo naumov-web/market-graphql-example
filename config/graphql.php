@@ -71,6 +71,7 @@ return [
                 'deleteCategory' => \App\GraphQL\Mutations\Account\Categories\DeleteCategoryMutation::class,
                 // Brands
                 'createBrand' => \App\GraphQL\Mutations\Account\Brands\CreateBrandMutation::class,
+                'updateBrand' => \App\GraphQL\Mutations\Account\Brands\UpdateBrandMutation::class,
                 'deleteBrand' => \App\GraphQL\Mutations\Account\Brands\DeleteBrandMutation::class,
             ],
             'middleware' => ['auth.graphql'],

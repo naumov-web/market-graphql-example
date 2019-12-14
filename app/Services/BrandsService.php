@@ -57,6 +57,27 @@ class BrandsService extends AbstractEntityService
     }
 
     /**
+     * Update brand
+     *
+     * @param Model $model
+     * @param array $data
+     * @return Model|null
+     */
+    public function update(Model $model, array $data): ?Model
+    {
+        return $this->updateModel(
+            $model,
+            Arr::only(
+                $data,
+                [
+                    'name',
+                    'description'
+                ]
+            )
+        );
+    }
+
+    /**
      * Delete brand
      *
      * @param Model $model
