@@ -82,10 +82,14 @@ return [
     'types' => [
         'login' => \App\GraphQL\Types\Resources\Auth\UserLoginType::class,
         'user' => \App\GraphQL\Types\Models\UserType::class,
+        // Categories
         'category' => \App\GraphQL\Types\Models\CategoryType::class,
         'categoriesList' => \App\GraphQL\Types\Resources\Account\Categories\CategoriesList::class,
+        // Brands
         'brandsList' => \App\GraphQL\Types\Resources\Account\Brands\BrandsList::class,
         'brand' => \App\GraphQL\Types\Models\BrandType::class,
+        // Files
+        'createFile' => \App\GraphQL\Types\Models\Creation\CreateFileType::class,
         'defaultBoolean' => \App\GraphQL\Types\Resources\DefaultBooleanType::class,
     ],
 
