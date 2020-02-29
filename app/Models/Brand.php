@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * Class Brands
@@ -19,4 +20,14 @@ class Brand extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * File relation
+     *
+     * @return MorphOne
+     */
+    public function file(): MorphOne
+    {
+        return $this->morphOne(File::class, 'owner');
+    }
 }

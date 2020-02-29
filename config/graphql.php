@@ -91,6 +91,7 @@ return [
         'brand' => \App\GraphQL\Types\Models\BrandType::class,
         // Files
         'createFile' => \App\GraphQL\Types\Models\Creation\CreateFileType::class,
+        'file' => \App\GraphQL\Types\Models\FileType::class,
         'defaultBoolean' => \App\GraphQL\Types\Resources\DefaultBooleanType::class,
     ],
 

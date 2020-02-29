@@ -5,6 +5,7 @@ namespace App\GraphQL\Types\Models;
 use App\Models\Brand;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
+use Rebing\GraphQL\Support\Facades\GraphQL;
 
 /**
  * Class BrandType
@@ -41,6 +42,10 @@ class BrandType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'The description of brand'
             ],
+            'file' => [
+                'type' => GraphQL::type('file'),
+                'description' => 'The logo of brand'
+            ]
         ];
     }
 }

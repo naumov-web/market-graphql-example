@@ -1,1 +1,1 @@
-mutation {createBrand(name:"Toyota", file:{name:"",mime:"", content:""}){id}}
+mutation {createBrand(name:"Toyota", file:{name:"image.png",mime:"image/png", content:""}){id}}

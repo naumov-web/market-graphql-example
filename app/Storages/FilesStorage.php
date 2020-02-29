@@ -16,6 +16,12 @@ class FilesStorage extends AbstractStorage
     const UPLOADS_DIR = '/app/public/uploads/';
 
     /**
+     * Url prefix
+     * @var string
+     */
+    const URL_PREFIX = '/storage/uploads/';
+
+    /**
      * Store a file
      *
      * @param array $data
@@ -23,7 +29,8 @@ class FilesStorage extends AbstractStorage
      */
     public function store(array $data): string
     {
-        $directory_path = self::UPLOADS_DIR . sha1(microtime()) . '/' . sha1($data['content']);
+        $directories = sha1(microtime()) . '/' . sha1($data['content']);
+        $directory_path = self::UPLOADS_DIR . $directories;
         $file_path = $directory_path . '/' . $data['name'];
 
         if (!file_exists(storage_path($directory_path))) {
@@ -36,7 +43,7 @@ class FilesStorage extends AbstractStorage
 
         file_put_contents(storage_path($file_path), base64_decode($data['content']));
 
-        return $file_path;
+        return self::URL_PREFIX . $directories . '/' . $data['name'];
     }
 
 }

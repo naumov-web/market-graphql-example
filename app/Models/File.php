@@ -23,4 +23,14 @@ class File extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * URL attribute accessor
+     *
+     * @return string
+     */
+    public function getUrlAttribute(): string
+    {
+        return config('app.url') . $this->path;
+    }
 }

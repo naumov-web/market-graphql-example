@@ -1,0 +1,1 @@
+{getBrands{items{id, name, description, file {id, name, mime, is_main, url}}, count}}
