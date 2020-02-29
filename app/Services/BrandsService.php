@@ -21,12 +21,23 @@ class BrandsService extends AbstractEntityService
     protected $repository;
 
     /**
+     * Files service instance
+     * @var FilesService
+     */
+    protected $files_service;
+
+    /**
      * BrandsService constructor.
      * @param BrandsRepository $repository
+     * @param FilesService $files_service
      */
-    public function __construct(BrandsRepository $repository)
+    public function __construct(
+        BrandsRepository $repository,
+        FilesService $files_service
+    )
     {
         $this->repository = $repository;
+        $this->files_service = $files_service;
     }
 
     /**
