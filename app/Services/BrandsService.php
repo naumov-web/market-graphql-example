@@ -56,7 +56,7 @@ class BrandsService extends AbstractEntityService
      */
     public function store(array $data): Model
     {
-        return $this->storeModel(
+        $model = $this->storeModel(
             Arr::only(
                 $data,
                 [
@@ -65,6 +65,10 @@ class BrandsService extends AbstractEntityService
                 ]
             )
         );
+
+        $this->files_service->store($model, $data['file']);
+
+        return $model;
     }
 
     /**
