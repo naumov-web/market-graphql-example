@@ -59,6 +59,10 @@ class CreateBrandMutation extends AdminMutation
         return [
             'name' => ['name' => 'name', 'type' => Type::nonNull(Type::string())],
             'description' => ['name' => 'description', 'type' => Type::string()],
+            'file' => [
+                'name' => 'file',
+                'type' => GraphQL::type('createFile')
+            ]
         ];
     }
 
@@ -72,7 +76,8 @@ class CreateBrandMutation extends AdminMutation
     {
         return [
             'name' => ['required'],
-            'description' => ['nullable', 'string']
+            'description' => ['nullable', 'string'],
+            'file' => ['required']
         ];
     }
 

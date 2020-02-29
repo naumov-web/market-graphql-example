@@ -5,20 +5,20 @@ namespace App\GraphQL\Types\Models\Creation;
 use App\Models\Brand;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Facades\GraphQL;
-use Rebing\GraphQL\Support\Type as GraphQLType;
+use Rebing\GraphQL\Support\InputType;
 
 /**
  * Class CreateBrandType
  * @package App\GraphQL\Types\Models\Creation
  */
-class CreateBrandType extends GraphQLType
+class CreateBrandType extends InputType
 {
     /**
      * Attributes of type
      * @var array
      */
     protected $attributes = [
-        'name' => 'Brands',
+        'name' => 'createBrand',
         'description' => 'A type',
         'model' => Brand::class,
     ];
@@ -30,10 +30,6 @@ class CreateBrandType extends GraphQLType
     public function fields(): array
     {
         return [
-            'id' => [
-                'type' => Type::nonNull(Type::int()),
-                'description' => 'The id of brand'
-            ],
             'name' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'The name of brand'

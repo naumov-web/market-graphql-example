@@ -86,6 +86,7 @@ return [
         'category' => \App\GraphQL\Types\Models\CategoryType::class,
         'categoriesList' => \App\GraphQL\Types\Resources\Account\Categories\CategoriesList::class,
         // Brands
+        'createBrand' => \App\GraphQL\Types\Models\Creation\CreateBrandType::class,
         'brandsList' => \App\GraphQL\Types\Resources\Account\Brands\BrandsList::class,
         'brand' => \App\GraphQL\Types\Models\BrandType::class,
         // Files

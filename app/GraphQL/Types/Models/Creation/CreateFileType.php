@@ -4,20 +4,20 @@ namespace App\GraphQL\Types\Models\Creation;
 
 use App\Models\File;
 use GraphQL\Type\Definition\Type;
-use Rebing\GraphQL\Support\Type as GraphQLType;
+use Rebing\GraphQL\Support\InputType;
 
 /**
  * Class CreateFileType
  * @package App\GraphQL\Types\Models\Creation
  */
-class CreateFileType extends GraphQLType
+class CreateFileType extends InputType
 {
     /**
      * Attributes of type
      * @var array
      */
     protected $attributes = [
-        'name' => 'Files',
+        'name' => 'createFile',
         'description' => 'A type',
         'model' => File::class,
     ];
