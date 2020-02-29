@@ -61,6 +61,10 @@ class UpdateBrandMutation extends AdminMutation
             'id' => ['name' => 'id', 'type' => Type::nonNull(Type::int())],
             'name' => ['name' => 'name', 'type' => Type::nonNull(Type::string())],
             'description' => ['name' => 'description', 'type' => Type::string()],
+            'file' => [
+                'name' => 'file',
+                'type' => GraphQL::type('createFile')
+            ]
         ];
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\File;
 use App\Repositories\AbstractRepository;
 use App\Repositories\FilesRepository;
 use App\Storages\FilesStorage;
@@ -64,5 +65,19 @@ class FilesService extends AbstractEntityService
         ];
 
         return $this->storeModel($model_data);
+    }
+
+    /**
+     * Delete a file
+     *
+     * @param File $model
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(File $model): bool
+    {
+        $this->files_storage->delete($model->path);
+
+        return $this->deleteModel($model);
     }
 }

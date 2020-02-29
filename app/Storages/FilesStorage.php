@@ -46,4 +46,17 @@ class FilesStorage extends AbstractStorage
         return self::URL_PREFIX . $directories . '/' . $data['name'];
     }
 
+    /**
+     * Delete a file
+     *
+     * @param string $path
+     * @return bool
+     */
+    public function delete(string $path): bool
+    {
+        $real_path = storage_path(str_replace(self::URL_PREFIX, self::UPLOADS_DIR, $path));
+
+        return @unlink($real_path);
+    }
+
 }

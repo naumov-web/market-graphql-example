@@ -77,10 +77,11 @@ class BrandsService extends AbstractEntityService
      * @param Model $model
      * @param array $data
      * @return Model|null
+     * @throws \Exception
      */
     public function update(Model $model, array $data): ?Model
     {
-        return $this->updateModel(
+        $model = $this->updateModel(
             $model,
             Arr::only(
                 $data,
@@ -90,6 +91,18 @@ class BrandsService extends AbstractEntityService
                 ]
             )
         );
+
+        if (isset($data['file'])) {
+            $file = $model->file;
+
+            if ($file) {
+                $this->files_service->delete($file);
+            }
+
+            $this->files_service->store($model, $data['file']);
+        }
+
+        return $model;
     }
 
     /**
@@ -101,6 +114,12 @@ class BrandsService extends AbstractEntityService
      */
     public function delete(Model $model): bool
     {
+        $file = $model->file;
+
+        if ($file) {
+            $this->files_service->delete($file);
+        }
+
         return $this->deleteModel($model);
     }
 }
